@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401235544) do
+ActiveRecord::Schema.define(:version => 20130401235715) do
 
   create_table "cardapios", :force => true do |t|
     t.date     "data"
@@ -19,5 +19,15 @@ ActiveRecord::Schema.define(:version => 20130401235544) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "items", :force => true do |t|
+    t.string   "descricao"
+    t.string   "categoria"
+    t.integer  "cardapio_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "items", ["cardapio_id"], :name => "index_items_on_cardapio_id"
 
 end

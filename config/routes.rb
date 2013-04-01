@@ -1,4 +1,7 @@
 CardapioUnifesp::Application.routes.draw do
+  resources :items
+
+
   resources :cardapios
 
 
