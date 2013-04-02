@@ -26,6 +26,8 @@ class CardapiosController < ApplicationController
   def new
     @cardapio = Cardapio.new
 
+    @cardapio.items << Item.new
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @cardapio }
@@ -35,6 +37,7 @@ class CardapiosController < ApplicationController
   # GET /cardapios/1/edit
   def edit
     @cardapio = Cardapio.find(params[:id])
+    p @cardapio.items
   end
 
   # POST /cardapios
