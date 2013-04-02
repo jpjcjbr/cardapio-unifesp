@@ -1,8 +1,8 @@
 CardapioUnifesp::Application.routes.draw do
   resources :items
-
-
   resources :cardapios
+
+  match 'search' => "cardapios#search"
 
 
   # The priority is based upon order of creation:

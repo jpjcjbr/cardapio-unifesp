@@ -17,8 +17,14 @@ class CardapiosController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @cardapio }
+      format.json { render json: @cardapio.to_json(:include => :items) }
     end
+  end
+
+  def search
+    @cardapio = Cardapio.find_by_data_and_tipo(Date.today, nil)
+
+    render :json => @cardapio.to_json(:include => :items)
   end
 
   # GET /cardapios/new

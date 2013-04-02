@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :tipo %><br />
-    <%= select_tag(:tipo, options_for_select(['Almoço', 'Jantar'])) %>
+    <%= select_tag('cardapio[tipo]', options_for_select(['Almoço', 'Jantar']), {:prompt => "Selecione"}) %>
   </div>
 
   <table>
