@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CardapiosController < ApplicationController
   # GET /cardapios
   # GET /cardapios.json
@@ -22,7 +23,14 @@ class CardapiosController < ApplicationController
   end
 
   def search
-    @cardapio = Cardapio.find_by_data_and_tipo(Date.today, nil)
+    tipo = "Almoço" if params[:tipo] == "ALMOCO"
+    tipo = "Jantar" if params[:tipo] == "JANTAR"
+
+    data = Date.strptime(params[:data], "%d-%m-%Y") if params[:data].present?
+
+    @cardapio = Cardapio.find_by_data_and_tipo(data, tipo)
+
+    @cardapio ||= Cardapio.new
 
     render :json => @cardapio.to_json(:include => :items)
   end
